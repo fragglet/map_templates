@@ -47,13 +47,16 @@ def draw_episode(filename, levels):
 
 	sploffset = WI_LUMP_OFFSETS['WISPLAT']
 	splsize = WI_LUMP_SIZES['WISPLAT']
-	for index, (x, y) in enumerate(levels):
+	for x, y in levels:
 		left, top = x - sploffset[0], y - sploffset[1]
 		right, bottom = left + splsize[0], top + splsize[1]
 		cmdline += " -draw 'rectangle %d,%d %d,%d'" % (
 			left, top, right, bottom)
+
+	cmdline += " -stroke none -fill black"
+	for index, (x, y) in enumerate(levels):
 		cmdline += " -draw 'text %d,%d \"%d\"'" % (
-			x, y, index + 1)
+			x - 5, y, index + 1)
 
 	cmdline += " " + filename
 	return cmdline

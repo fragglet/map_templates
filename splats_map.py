@@ -43,7 +43,8 @@ LEVEL_LOCATIONS = [
 ]
 
 def draw_episode(filename, levels):
-	cmdline = "convert -size 320x200 xc:skyblue -fill white -stroke black"
+	cmdline = "convert -size 320x200 'xc:#0000e3'"
+	cmdline += " -fill white -stroke black"
 
 	sploffset = WI_LUMP_OFFSETS['WISPLAT']
 	splsize = WI_LUMP_SIZES['WISPLAT']

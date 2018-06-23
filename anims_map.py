@@ -32,7 +32,7 @@ ANIMATION_LOCATIONS = (
 )
 
 def draw_episode(filename, levels):
-	cmdline = "convert -size 320x200 'xc:#7a7' -stroke none"
+	cmdline = "convert -size 320x200 'xc:#3f832f' -stroke none"
 	for label, x, y in levels:
 		w = BOX_MIN_W + BOX_CHAR_W * len(label)
 		cmdline += " -fill white"

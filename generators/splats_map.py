@@ -3,7 +3,7 @@
 from wadinfo import WI_LUMP_OFFSETS, WI_LUMP_SIZES
 
 # From wi_stuff.c in the Doom source.
-LEVEL_LOCATIONS = [
+DOOM_LEVEL_LOCATIONS = [
     # Episode 0 World Map
     (
         ( 185, 164 ),   # location of level 0 (CJ)
@@ -42,26 +42,75 @@ LEVEL_LOCATIONS = [
     )
 ]
 
-def draw_episode(filename, levels):
-	cmdline = "convert -size 320x200 'xc:#0000e3'"
-	cmdline += " -fill white -stroke black"
+# From in_lude.c in the Heretic source code:
+HERETIC_LEVEL_LOCATIONS = [
+    (
+        (172, 78),
+        (86, 90),
+        (73, 66),
+        (159, 95),
+        (148, 126),
+        (132, 54),
+        (131, 74),
+        (208, 138),
+        (52, 101)
+    ),
+    (
+        (218, 57),
+        (137, 81),
+        (155, 124),
+        (171, 68),
+        (250, 86),
+        (136, 98),
+        (203, 90),
+        (220, 140),
+        (279, 106)
+    ),
+    (
+        (86, 99),
+        (124, 103),
+        (154, 79),
+        (202, 83),
+        (178, 59),
+        (142, 58),
+        (219, 66),
+        (247, 57),
+        (107, 80)
+    )
+]
 
-	sploffset = WI_LUMP_OFFSETS['WISPLAT']
-	splsize = WI_LUMP_SIZES['WISPLAT']
-	for x, y in levels:
+def draw_episode(filename, levels, lumpname):
+	cmdline = "convert -size 320x200 'xc:#0000e3'"
+
+	sploffset = WI_LUMP_OFFSETS[lumpname]
+	splsize = WI_LUMP_SIZES[lumpname]
+	for index, (x, y) in enumerate(levels):
+		cmdline += " -fill white -stroke black"
 		left, top = x - sploffset[0], y - sploffset[1]
 		right, bottom = left + splsize[0], top + splsize[1]
 		cmdline += " -draw 'rectangle %d,%d %d,%d'" % (
 			left, top, right, bottom)
 
-	cmdline += " -stroke none -fill black"
-	for index, (x, y) in enumerate(levels):
+		cmdline += " -stroke none -fill black"
 		cmdline += " -draw 'text %d,%d \"%d\"'" % (
-			x - 5, y, index + 1)
+			(left + right - 6) / 2,
+			(top + bottom + 10) / 2,
+			index + 1)
 
 	cmdline += " " + filename
 	return cmdline
 
-for index, episode in enumerate(LEVEL_LOCATIONS):
-	print(draw_episode("splats%d.gif" % index, episode))
+for index, episode in enumerate(DOOM_LEVEL_LOCATIONS):
+	print(draw_episode(
+		"doom_e%d.gif" % (index + 1),
+		episode,
+		"WISPLAT"
+	))
+
+for index, episode in enumerate(HERETIC_LEVEL_LOCATIONS):
+	print(draw_episode(
+		"htic_e%d.gif" % (index + 1),
+		episode,
+		"IN_X"
+	))
 

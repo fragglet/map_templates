@@ -136,6 +136,10 @@ WI_LUMP_OFFSETS = {
     'WILV36': (0, 0),
     'WILV37': (0, 0),
     'WILV38': (0, 0),
+
+    # heretic.wad:
+    'IN_X':   (5, 5),
+    'IN_YAH': (0, 16),
 }
 
 WI_LUMP_SIZES = {
@@ -275,5 +279,9 @@ WI_LUMP_SIZES = {
     'WIURH0': (60, 15),
     'WIURH1': (60, 15),
     'WIVCTMS': (55, 8),
+
+    # heretic.wad:
+    'IN_X': (12, 12),
+    'IN_YAH': (16, 16),
 }
 

@@ -1,5 +1,5 @@
 [graphics]
-WIMAP0    = splats0
+WIMAP0    = doom_e1
 WIA00900      = empty
 WIA00901      = empty
 WIA00902      = empty
@@ -30,7 +30,7 @@ WIA00102      = empty
 WIA00000      = empty
 WIA00001      = empty
 WIA00002      = empty
-WIMAP1       = splats1
+WIMAP1       = doom_e2
 WIA10000      = empty
 WIA10100      = empty
 WIA10200      = empty
@@ -41,7 +41,7 @@ WIA10600      = empty
 WIA10700      = empty
 WIA10701      = empty
 WIA10702      = empty
-WIMAP2      = splats2
+WIMAP2      = doom_e3
 WIA20000      = empty
 WIA20001      = empty
 WIA20002      = empty

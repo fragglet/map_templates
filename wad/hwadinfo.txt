@@ -1,0 +1,5 @@
+[graphics]
+MAPE1 = htic_e1
+MAPE2 = htic_e2
+MAPE3 = htic_e3
+
